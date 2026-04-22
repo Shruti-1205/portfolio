@@ -14,11 +14,10 @@ export const publications: Publication[] = [
     url: 'https://ijirt.org/publishedpaper/IJIRT168142_PAPER.pdf',
   },
   {
-    title: 'Journal publication, International Journal of Information Technology',
-    venue: 'Springer IJIT',
+    title: 'Predicting and classifying water quality, treatment, and usage: a comprehensive review',
+    venue: 'International Journal of Information Technology (Springer), Volume 15, Pages 2837-2845',
     year: '2023',
     url: 'https://link.springer.com/article/10.1007/s41870-023-01285-9',
-    note: 'Title pending update on live site',
   },
   {
     title: 'Anomaly Detection in Time Series using Unsupervised Machine Learning Approach',
