@@ -1,0 +1,33 @@
+---
+import { experience } from '../data/experience';
+---
+<section id="experience" class="max-w-page mx-auto px-6 py-20 border-t border-line">
+  <h2 class="font-serif text-3xl md:text-4xl mb-12 tracking-tightish">Experience</h2>
+
+  <div class="space-y-14">
+    {experience.map((role) => (
+      <article class="grid md:grid-cols-[200px_1fr] gap-4 md:gap-8">
+        <div class="text-sm text-muted font-mono pt-1 leading-relaxed">
+          <p>{role.dates}</p>
+          {role.current && (
+            <p class="mt-1 inline-flex items-center gap-1.5 text-accent">
+              <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
+              Current role
+            </p>
+          )}
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold leading-snug">{role.role}</h3>
+          <p class="text-muted mb-5">{role.company} &middot; {role.location}</p>
+          <ul class="space-y-2.5 text-[0.97rem] leading-relaxed text-ink/85">
+            {role.bullets.map((b) => (
+              <li class="relative pl-5 before:content-[''] before:absolute before:left-0 before:top-[0.7rem] before:w-2 before:h-px before:bg-accent">
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

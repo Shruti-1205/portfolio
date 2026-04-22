@@ -1,0 +1,32 @@
+---
+import { profile } from '../data/profile';
+---
+<section id="top" class="max-w-page mx-auto px-6 pt-24 pb-20">
+  <h1 class="font-serif text-5xl md:text-7xl tracking-tightish leading-[1.04]">
+    Shruti <span class="italic">Liladhar</span> Devlekar
+  </h1>
+
+  <p class="mt-5 text-sm font-mono text-muted tracking-wide">
+    Data Scientist <span class="text-soft px-1">&middot;</span>
+    Machine Learning Engineer <span class="text-soft px-1">&middot;</span>
+    <span class="text-accent">{profile.location}</span>
+  </p>
+
+  <p class="mt-8 text-[1.05rem] text-ink/85 max-w-3xl leading-[1.7]">
+    Working across ML, AI, LLM, and analytics. Hands-on with RAG systems, multi-agent LLM orchestration, drift-aware MLOps, and production analytics pipelines.
+  </p>
+
+  <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+    <a href={`mailto:${profile.email}`} class="text-ink underline decoration-accent decoration-1 underline-offset-[6px] hover:text-accent transition">
+      {profile.email}
+    </a>
+    <span class="text-soft" aria-hidden="true">&middot;</span>
+    <a href={profile.github} target="_blank" rel="noopener" class="text-muted hover:text-ink transition">
+      {profile.githubLabel}
+    </a>
+    <span class="text-soft" aria-hidden="true">&middot;</span>
+    <a href={profile.linkedin} target="_blank" rel="noopener" class="text-muted hover:text-ink transition">
+      {profile.linkedinLabel}
+    </a>
+  </div>
+</section>

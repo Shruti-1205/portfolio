@@ -1,0 +1,31 @@
+---
+import { profile } from '../data/profile';
+---
+<section id="contact" class="max-w-page mx-auto px-6 py-24 border-t border-line">
+  <h2 class="font-serif text-3xl md:text-4xl mb-6 tracking-tightish">Contact</h2>
+
+  <p class="text-ink/85 text-[1.05rem] mb-10 max-w-2xl leading-relaxed">
+    Email is the fastest path. I reply within a day.
+  </p>
+
+  <div class="space-y-3 font-mono text-sm">
+    <p>
+      <span class="text-muted inline-block w-20">email</span>
+      <a href={`mailto:${profile.email}`} class="text-ink underline decoration-accent decoration-1 underline-offset-[5px] hover:text-accent transition">
+        {profile.email}
+      </a>
+    </p>
+    <p>
+      <span class="text-muted inline-block w-20">github</span>
+      <a href={profile.github} target="_blank" rel="noopener" class="text-ink underline decoration-accent decoration-1 underline-offset-[5px] hover:text-accent transition">
+        {profile.githubLabel}
+      </a>
+    </p>
+    <p>
+      <span class="text-muted inline-block w-20">linkedin</span>
+      <a href={profile.linkedin} target="_blank" rel="noopener" class="text-ink underline decoration-accent decoration-1 underline-offset-[5px] hover:text-accent transition">
+        {profile.linkedinLabel}
+      </a>
+    </p>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+import { publications } from '../data/publications';
+---
+<section id="publications" class="max-w-page mx-auto px-6 py-20 border-t border-line">
+  <h2 class="font-serif text-3xl md:text-4xl mb-10 tracking-tightish">Publications</h2>
+  <ul class="space-y-7">
+    {publications.map((p) => (
+      <li class="grid md:grid-cols-[100px_1fr] gap-2 md:gap-8 group">
+        <span class="text-sm font-mono text-muted pt-1">{p.year}</span>
+        <div>
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener"
+            class="text-ink font-medium leading-snug block hover:text-accent transition"
+          >
+            {p.title}
+          </a>
+          <p class="text-sm text-muted mt-1.5">{p.venue}</p>
+          {p.note && <p class="text-xs text-soft mt-1 italic">{p.note}</p>}
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

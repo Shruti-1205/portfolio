@@ -1,0 +1,174 @@
+---
+import { projects } from '../data/projects';
+
+const filters: Array<{ id: string; label: string }> = [
+  { id: 'All', label: 'All' },
+  { id: 'ML', label: 'ML' },
+  { id: 'LLM', label: 'LLMs' },
+  { id: 'Analytics', label: 'Analytics' },
+  { id: 'Systems', label: 'Systems' },
+];
+---
+<section id="projects" class="max-w-page mx-auto px-6 py-20 border-t border-line">
+  <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10">
+    <div>
+      <h2 class="font-serif text-3xl md:text-4xl tracking-tightish">Projects</h2>
+      <p class="text-muted mt-2 text-sm max-w-xl">Selected work across research, production ML, LLM systems, and analytics.</p>
+    </div>
+    <div class="flex flex-wrap gap-2" id="project-filters">
+      {filters.map((f, i) => (
+        <button
+          type="button"
+          data-filter={f.id}
+          class:list={[
+            'filter-btn px-3 py-1.5 text-xs font-mono rounded-full border transition',
+            i === 0
+              ? 'bg-ink text-bg border-ink'
+              : 'border-line text-muted hover:border-ink hover:text-ink',
+          ]}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="grid gap-5 md:grid-cols-2" id="project-grid">
+    {projects.map((p) => (
+      <article
+        data-tags={p.tags.join(',')}
+        class="project-card group border border-line rounded-lg p-6 bg-white/40 hover:border-ink hover:bg-white transition flex flex-col"
+      >
+        <div class="flex items-center gap-1.5 mb-3">
+          {p.tags.map((t) => (
+            <span class="text-[0.62rem] font-mono uppercase tracking-[0.1em] px-2 py-0.5 bg-accent-soft text-accent rounded">
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <h3 class="font-serif text-xl leading-snug mb-2">{p.title}</h3>
+        <p class="text-muted text-[0.95rem] leading-relaxed mb-3">{p.hook}</p>
+
+        <p class="text-xs font-mono text-accent mb-4 leading-relaxed">{p.metric}</p>
+
+        <div class="flex flex-wrap gap-1.5 mb-5">
+          {p.stack.slice(0, 6).map((s) => (
+            <span class="text-[0.7rem] px-2 py-0.5 border border-line rounded text-muted font-mono">
+              {s}
+            </span>
+          ))}
+          {p.stack.length > 6 && (
+            <span class="text-[0.7rem] px-2 py-0.5 text-muted font-mono">
+              +{p.stack.length - 6}
+            </span>
+          )}
+        </div>
+
+        <div class="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+          {p.github && (
+            <a href={p.github} target="_blank" rel="noopener" class="text-accent hover:underline">
+              GitHub
+            </a>
+          )}
+          {p.demos?.map((d) => (
+            <a href={d.url} target="_blank" rel="noopener" class="text-accent hover:underline">
+              {d.label}
+            </a>
+          ))}
+          {p.paperUrl && (
+            <a href={p.paperUrl} target="_blank" rel="noopener" class="text-accent hover:underline">
+              Paper
+            </a>
+          )}
+          <a href={`#${p.slug}`} class="ml-auto text-muted hover:text-ink">
+            Details
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="mt-20 space-y-16">
+    {projects.map((p) => (
+      <article id={p.slug} class="scroll-mt-24 border-t border-line pt-10">
+        <div class="flex flex-wrap items-baseline gap-3 mb-3">
+          <h3 class="font-serif text-2xl md:text-3xl tracking-tightish">{p.title}</h3>
+          <div class="flex gap-1.5">
+            {p.tags.map((t) => (
+              <span class="text-[0.62rem] font-mono uppercase tracking-[0.1em] px-2 py-0.5 bg-accent-soft text-accent rounded">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <p class="text-ink/80 text-[1.02rem] mb-3 max-w-3xl leading-relaxed">{p.hook}</p>
+        <p class="font-mono text-sm text-accent mb-6">{p.metric}</p>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          {p.stack.map((s) => (
+            <span class="text-xs px-2.5 py-1 border border-line rounded text-muted font-mono">
+              {s}
+            </span>
+          ))}
+        </div>
+
+        <ul class="space-y-2.5 text-ink/90 leading-relaxed mb-6 max-w-3xl">
+          {p.description.map((d) => (
+            <li class="relative pl-5 before:content-[''] before:absolute before:left-0 before:top-[0.65rem] before:w-2 before:h-px before:bg-accent">
+              {d}
+            </li>
+          ))}
+        </ul>
+
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+          {p.github && (
+            <a href={p.github} target="_blank" rel="noopener" class="text-accent hover:underline">
+              View on GitHub
+            </a>
+          )}
+          {p.demos?.map((d) => (
+            <a href={d.url} target="_blank" rel="noopener" class="text-accent hover:underline">
+              {d.label}
+            </a>
+          ))}
+          {p.paperUrl && (
+            <a href={p.paperUrl} target="_blank" rel="noopener" class="text-accent hover:underline">
+              Read Paper
+            </a>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<script>
+  const filterBar = document.getElementById('project-filters');
+  const cards = document.querySelectorAll<HTMLElement>('.project-card');
+
+  filterBar?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('button[data-filter]') as HTMLButtonElement | null;
+    if (!btn) return;
+
+    const filter = btn.dataset.filter || 'All';
+
+    filterBar.querySelectorAll<HTMLButtonElement>('.filter-btn').forEach((b) => {
+      const active = b === btn;
+      b.classList.toggle('bg-ink', active);
+      b.classList.toggle('text-bg', active);
+      b.classList.toggle('border-ink', active);
+      b.classList.toggle('border-line', !active);
+      b.classList.toggle('text-muted', !active);
+      b.classList.toggle('hover:border-ink', !active);
+      b.classList.toggle('hover:text-ink', !active);
+    });
+
+    cards.forEach((card) => {
+      const tags = (card.dataset.tags || '').split(',');
+      const show = filter === 'All' || tags.includes(filter);
+      card.style.display = show ? '' : 'none';
+    });
+  });
+</script>
