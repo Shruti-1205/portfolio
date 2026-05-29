@@ -1,15 +1,22 @@
 export const skills: Record<string, string[]> = {
-  Programming: ['Python', 'SQL', 'JavaScript', 'C++'],
-  'Machine Learning': [
+  Programming: ['Python', 'SQL', 'R', 'JavaScript', 'C++', 'Pandas', 'NumPy'],
+  'Machine Learning and Statistics': [
     'scikit-learn',
     'PyTorch',
     'TensorFlow',
     'XGBoost',
     'CatBoost',
+    'HistGradientBoosting',
     'Feature Engineering',
     'Model Calibration',
     'Anomaly Detection',
+    'Clustering',
+    'Time Series Forecasting',
     'Reinforcement Learning',
+    'Hypothesis Testing',
+    'A/B Testing',
+    'Regression Analysis',
+    'Cross Validation',
   ],
   'Generative AI and LLMs': [
     'LangChain',
@@ -39,6 +46,7 @@ export const skills: Record<string, string[]> = {
     'GitHub Actions',
     'HuggingFace Spaces',
     'Streamlit',
+    'SHAP',
     'pytest',
   ],
   'Analytics and BI': [
@@ -47,6 +55,7 @@ export const skills: Record<string, string[]> = {
     'Tableau',
     'Star Schema Modeling',
     'Matplotlib',
+    'Seaborn',
     'Plotly',
     'Excel',
   ],

@@ -20,7 +20,7 @@ export const experience: Role[] = [
     ],
   },
   {
-    company: 'Chista Health',
+    company: 'Chista',
     role: 'Data Engineering Intern, AI & Analytics Systems',
     location: 'Remote',
     dates: 'Jul 2025 to Dec 2025',
@@ -32,7 +32,17 @@ export const experience: Role[] = [
     ],
   },
   {
-    company: 'Inventiff Consulting Services',
+    company: 'ITBrains Consultancy and Services',
+    role: 'Software Engineer Intern',
+    location: 'Remote, part-time',
+    dates: 'Aug 2024 to Jul 2025',
+    bullets: [
+      'Shipped 4 production full-stack web applications (React, Node.js), owning features end to end from UI components through REST APIs and database schema.',
+      'Built and integrated an AI chatbot and a recommendation feature into client-facing apps, automating a request-handling workflow staff had previously done by hand.',
+    ],
+  },
+  {
+    company: 'Inventiff Analytics',
     role: 'Data Science Intern',
     location: 'India',
     dates: 'Jun 2023 to Dec 2023',
